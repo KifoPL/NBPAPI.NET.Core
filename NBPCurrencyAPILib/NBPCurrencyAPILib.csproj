@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>KifoPL</Authors>
+    <Product>NBP API Library</Product>
+    <Description>Unofficial .DLL package for requesting data from NBP API.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression />
+    <PackageProjectUrl>https://github.com/KifoPL/NBPCurrencyDLL</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KifoPL/NBPCurrencyDLL</RepositoryUrl>
+    <PackageTags>nbp, csharp</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
