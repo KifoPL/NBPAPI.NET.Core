@@ -18,8 +18,13 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Publish FluentEmail.Core
+    - name: Publish NBPCurrencyAPILib
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: NBPCurrencyAPILib/NBPCurrencyAPILib.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          # Flag to toggle git tagging, enabled by default
+          TAG_COMMIT: true
+
+          # Format of the git tag, [*] gets replaced with actual version
+          TAG_FORMAT: v*
