@@ -7,6 +7,9 @@ using System.Net.Http;
 
 namespace NBPCurrencyAPILib
 {
+    /// <summary>
+    /// Entry point for interaction with the library.
+    /// </summary>
     public static partial class NBPAPI
     {
         #region GetCurrency
@@ -15,7 +18,7 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetCurrencyAsync(TableCode tableCode, string currencyCode, bool isJSON = true)
         {
@@ -40,7 +43,7 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetCurrency(TableCode tableCode, string currencyCode, bool isJSON = true)
         {
@@ -52,7 +55,7 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetCurrencyTodayAsync(TableCode tableCode, string currencyCode, bool isJSON = true)
         {
@@ -77,7 +80,7 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetCurrencyToday(TableCode tableCode, string currencyCode, bool isJSON = true)
         {
@@ -88,7 +91,8 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+        /// <param name="date">The date.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetCurrencyAsync(TableCode tableCode, string currencyCode, DateTime date, bool isJSON = true)
         {
@@ -113,7 +117,8 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+        /// <param name="date">The date.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetCurrencyToday(TableCode tableCode, string currencyCode, DateTime date, bool isJSON = true)
         {
@@ -130,7 +135,7 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
         /// <param name="topCount">Amount of exchange rates to return.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetCurrenciesAsync(TableCode tableCode, string currencyCode, int topCount, bool isJSON = true)
         {
@@ -155,7 +160,8 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+        /// <param name="topCount">The amount of currencies to get.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetCurrencies(TableCode tableCode, string currencyCode, int topCount, bool isJSON = true)
         {
@@ -168,7 +174,7 @@ namespace NBPCurrencyAPILib
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
         /// <param name="startDate">Start date.</param>
         /// <param name="endDate">End date.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetCurrenciesAsync(TableCode tableCode, string currencyCode, DateTime startDate, DateTime endDate, bool isJSON = true)
         {
@@ -193,7 +199,9 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <param name="startDate">The start date.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetCurrencies(TableCode tableCode, string currencyCode, DateTime startDate, DateTime endDate, bool isJSON = true)
         {

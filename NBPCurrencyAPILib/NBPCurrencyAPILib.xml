@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NBPCurrencyAPILib</name>
+    </assembly>
+    <members>
+        <member name="T:NBPCurrencyAPILib.NBPAPI">
+            <summary>
+            Entry point for interaction with the library.
+            </summary>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencyAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.Boolean)">
+            <summary>
+            Gets current Exchange rate from PLN to <paramref name="currencyCode"/> (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrency(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.Boolean)">
+            <summary>
+            Gets current Exchange rate from PLN to <paramref name="currencyCode"/>.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencyTodayAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.Boolean)">
+            <summary>
+            Gets current Exchange rate from PLN to <paramref name="currencyCode"/> published today (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencyToday(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.Boolean)">
+            <summary>
+            Gets Exchange rate from PLN to <paramref name="currencyCode"/> published today.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencyAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.DateTime,System.Boolean)">
+            <summary>
+            Gets current Exchange rate from PLN to <paramref name="currencyCode"/> from <paramref name="date"/> (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <param name="date">The date.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencyToday(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.DateTime,System.Boolean)">
+            <summary>
+            Gets Exchange rate from PLN to <paramref name="currencyCode"/> from <paramref name="date"/>.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <param name="date">The date.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrenciesAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Gets last <paramref name="topCount"/> exchange rates from PLN to <paramref name="currencyCode"/> (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="topCount">Amount of exchange rates to return.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencies(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Gets current Exchange rate from PLN to <paramref name="currencyCode"/>.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <param name="topCount">The amount of currencies to get.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrenciesAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.DateTime,System.DateTime,System.Boolean)">
+            <summary>
+            Gets exchange rates from PLN to <paramref name="currencyCode"/> from <paramref name="startDate"/> to <paramref name="endDate"/> (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="startDate">Start date.</param>
+            <param name="endDate">End date.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetCurrencies(NBPCurrencyAPILib.NBPAPI.TableCode,System.String,System.DateTime,System.DateTime,System.Boolean)">
+            <summary>
+            Gets exchange rates from PLN to <paramref name="currencyCode"/> from <paramref name="startDate"/> to <paramref name="endDate"/>.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="currencyCode">ISO 4217 Currency Code.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <param name="endDate">The end date.</param>
+            <param name="startDate">The start date.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="T:NBPCurrencyAPILib.NBPAPI.TableCode">
+            <summary>
+            Table codes - A, B or C
+            </summary>
+        </member>
+        <member name="F:NBPCurrencyAPILib.NBPAPI.uri">
+            <summary>
+            http://api.nbp.pl/api/
+            </summary>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.Error(System.Net.Http.HttpResponseMessage)">
+            <param name="response">The response.</param>
+            <returns>Error message with status code.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTableAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.Boolean)">
+            <summary>
+            Gets current table of exchange rates (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTable(NBPCurrencyAPILib.NBPAPI.TableCode,System.Boolean)">
+            <summary>
+            Gets current table of exchange rates.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTableAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.DateTime,System.Boolean)">
+            <summary>
+            Gets table of exchange rates from <paramref name="date"/> (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <param name="date"> the date.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTable(NBPCurrencyAPILib.NBPAPI.TableCode,System.DateTime,System.Boolean)">
+            <summary>
+            Gets table of exchange rates from <paramref name="date"/>.
+            </summary>
+            <param name="date">The Date.</param>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTableTodayAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.Boolean)">
+            <summary>
+            Gets table of exchange rates published today (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTableToday(NBPCurrencyAPILib.NBPAPI.TableCode,System.Boolean)">
+            <summary>
+            Gets table of exchange rates published today.
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTablesAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.Int32,System.Boolean)">
+            <summary>
+            Gets last <paramref name="topCount"/> of tables (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="topCount">Amount of tables to return.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTables(NBPCurrencyAPILib.NBPAPI.TableCode,System.Int32,System.Boolean)">
+            <summary>
+            Gets last <paramref name="topCount"/> of tables.
+            </summary>
+            <param name="topCount">Amount of tables to return.</param>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTablesAsync(NBPCurrencyAPILib.NBPAPI.TableCode,System.DateTime,System.DateTime,System.Boolean)">
+            <summary>
+            Gets tables from <paramref name="startDate"/> to <paramref name="endDate"/> (asynchronous).
+            </summary>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="startDate">Start date.</param>
+            <param name="endDate">End date.</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>Async XML/JSON result from NBP API.</returns>
+        </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.GetTables(NBPCurrencyAPILib.NBPAPI.TableCode,System.DateTime,System.DateTime,System.Boolean)">
+            <summary>
+            Gets tables from <paramref name="startDate"/> to <paramref name="endDate"/>.
+            </summary>
+            <param name="startDate">Start date.</param>
+            <param name="endDate">End date.</param>
+            <param name="tableCode">Table Code (Capital A-C).</param>
+            <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
+            <returns>XML/JSON result from NBP API.</returns>
+        </member>
+    </members>
+</doc>

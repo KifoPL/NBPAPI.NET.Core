@@ -35,7 +35,7 @@ namespace NBPCurrencyAPILib
         /// Gets current table of exchange rates.
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML</param>
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetTable(TableCode tableCode, bool isJSON = true)
         {
@@ -68,8 +68,9 @@ namespace NBPCurrencyAPILib
         /// <summary>
         /// Gets table of exchange rates from <paramref name="date"/>.
         /// </summary>
+        /// <param name="date">The Date.</param>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML</param>
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetTable(TableCode tableCode, DateTime date, bool isJSON = true)
         {
@@ -102,7 +103,7 @@ namespace NBPCurrencyAPILib
         /// Gets table of exchange rates published today.
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML</param>
+        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
         public static string GetTableToday(TableCode tableCode, bool isJSON = true)
         {
