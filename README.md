@@ -1,11 +1,13 @@
-# NBP API .DLL
+# NBP API .DLL (C#)
 
 Unofficial `.DLL` package for requesting data from [NBP API](http://api.nbp.pl/).
 
 If you find any issues, [submit a ticket](https://github.com/KifoPL/NBPCurrencyDLL/issues/new/choose).
 
-### Current API coverage:
+## Current API coverage:
 
 - [x] Currencies
 - [x] Tables
 - [ ] Gold rates (coming soon™)
+
+## [Click for documentation](./docs/Documentation.md)
