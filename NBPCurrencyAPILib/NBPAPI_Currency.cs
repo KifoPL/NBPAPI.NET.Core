@@ -25,10 +25,7 @@ namespace NBPCurrencyAPILib
             currencyCode = currencyCode.ToUpper();
             if (currencyCode.Length != 3) throw new ArgumentException("Code must be 3 letters long, check ISO 4217.");
 
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}?format={(isJSON ? "json" : "xml")}";
 
@@ -62,10 +59,7 @@ namespace NBPCurrencyAPILib
             currencyCode = currencyCode.ToUpper();
             if (currencyCode.Length != 3) throw new ArgumentException("Code must be 3 letters long, check ISO 4217.");
 
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";  
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}/today?format={(isJSON ? "json" : "xml")}";
 
@@ -99,10 +93,7 @@ namespace NBPCurrencyAPILib
             currencyCode = currencyCode.ToUpper();
             if (currencyCode.Length != 3) throw new ArgumentException("Code must be 3 letters long, check ISO 4217.");
 
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}/{date:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
 
@@ -142,10 +133,7 @@ namespace NBPCurrencyAPILib
             currencyCode = currencyCode.ToUpper();
             if (currencyCode.Length != 3) throw new ArgumentException("Code must be 3 letters long, check ISO 4217.");
 
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}/last/{topCount}?format={(isJSON ? "json" : "xml")}";
 
@@ -181,10 +169,7 @@ namespace NBPCurrencyAPILib
             currencyCode = currencyCode.ToUpper();
             if (currencyCode.Length != 3) throw new ArgumentException("Code must be 3 letters long, check ISO 4217.");
 
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}/{startDate:yyyy-MM-dd}/{endDate:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
 

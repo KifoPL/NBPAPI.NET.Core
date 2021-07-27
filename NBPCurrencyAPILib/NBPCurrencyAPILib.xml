@@ -117,6 +117,11 @@
             http://api.nbp.pl/api/
             </summary>
         </member>
+        <member name="M:NBPCurrencyAPILib.NBPAPI.TableLetter(NBPCurrencyAPILib.NBPAPI.TableCode)">
+            <param name="tableCode">The table code.</param>
+            <returns>Table Code as a letter</returns>
+            <exception cref="T:System.ArgumentException">Incorrect table code.</exception>
+        </member>
         <member name="M:NBPCurrencyAPILib.NBPAPI.Error(System.Net.Http.HttpResponseMessage)">
             <param name="response">The response.</param>
             <returns>Error message with status code.</returns>

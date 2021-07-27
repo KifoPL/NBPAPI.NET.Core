@@ -18,10 +18,7 @@ namespace NBPCurrencyAPILib
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetTableAsync(TableCode tableCode, bool isJSON = true)
         {
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}?format={(isJSON ? "json" : "xml")}";
 
@@ -52,10 +49,7 @@ namespace NBPCurrencyAPILib
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetTableAsync(TableCode tableCode, DateTime date, bool isJSON = true)
         {
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/{date:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
 
@@ -86,10 +80,7 @@ namespace NBPCurrencyAPILib
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetTableTodayAsync(TableCode tableCode, bool isJSON = true)
         {
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/today?format={(isJSON ? "json" : "xml")}";
 
@@ -123,10 +114,7 @@ namespace NBPCurrencyAPILib
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetTablesAsync(TableCode tableCode, int topCount, bool isJSON = true)
         {
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/last/{topCount}?format={(isJSON ? "json" : "xml")}";
 
@@ -157,10 +145,7 @@ namespace NBPCurrencyAPILib
         /// <returns>Async XML/JSON result from NBP API.</returns>
         public static Task<string> GetTablesAsync(TableCode tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
         {
-            string tableLetter = "";
-            if (tableCode == TableCode.A) tableLetter = "A";
-            if (tableCode == TableCode.B) tableLetter = "B";
-            if (tableCode == TableCode.C) tableLetter = "C";
+            string tableLetter = TableLetter(tableCode);
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/{startDate:yyyy-MM-dd}/{endDate:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
 
