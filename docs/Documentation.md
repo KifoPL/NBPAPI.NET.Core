@@ -315,6 +315,18 @@ Async XML/JSON result from NBP API.
 
 Table codes - A, B or C
 
+### NBPCurrencyAPILib.NBPAPI.TableLetter(tableCode)
+
+| Name | Description |
+| ---- | ----------- |
+| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>The table code. |
+
+#### Returns
+
+Table Code as a letter
+
+*System.ArgumentException:* Incorrect table code.
+
 ### NBPCurrencyAPILib.NBPAPI.uri
 
 http://api.nbp.pl/api/
