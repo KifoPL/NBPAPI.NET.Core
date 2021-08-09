@@ -1,10 +1,9 @@
-# NBPCurrencyAPILib
+# NBPAPI.NET.Core
 
 <table>
 <tbody>
 <tr>
 <td><a href="#nbpapi">NBPAPI</a></td>
-<td><a href="#tablecode">TableCode</a></td>
 </tr>
 </tbody>
 </table>
@@ -30,7 +29,7 @@ Gets exchange rates from PLN to currencyCode from startDate to endDate.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
 | endDate | *System.DateTime*<br>The end date. |
@@ -46,7 +45,7 @@ Gets current Exchange rate from PLN to currencyCode.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.Int32*<br>`true` if returned string will be JSON, `false` if XML. |
 | topCount | *System.Boolean*<br>The amount of currencies to get. |
@@ -61,7 +60,7 @@ Gets exchange rates from PLN to currencyCode from startDate to endDate (asynchro
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | startDate | *System.DateTime*<br>Start date. |
 | endDate | *System.DateTime*<br>End date. |
@@ -77,7 +76,7 @@ Gets last topCount exchange rates from PLN to currencyCode (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | topCount | *System.Int32*<br>Amount of exchange rates to return. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
@@ -92,7 +91,7 @@ Gets current Exchange rate from PLN to currencyCode.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
@@ -106,7 +105,7 @@ Gets current Exchange rate from PLN to currencyCode (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
@@ -120,7 +119,7 @@ Gets current Exchange rate from PLN to currencyCode from date (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
 | date | *System.Boolean*<br>The date. |
@@ -135,7 +134,7 @@ Gets Exchange rate from PLN to currencyCode published today.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML |
 
@@ -149,7 +148,7 @@ Gets Exchange rate from PLN to currencyCode from date.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
 | date | *System.Boolean*<br>The date. |
@@ -164,7 +163,7 @@ Gets current Exchange rate from PLN to currencyCode published today (asynchronou
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
@@ -178,7 +177,7 @@ Gets current table of exchange rates.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, false if XML. |
 
 #### Returns
@@ -191,7 +190,7 @@ Gets table of exchange rates from date.
 
 | Name | Description |
 | ---- | ----------- |
-| date | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>The Date. |
+| date | *System.Char*<br>The Date. |
 | tableCode | *System.DateTime*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, false if XML. |
 
@@ -205,7 +204,7 @@ Gets current table of exchange rates (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
 #### Returns
@@ -218,7 +217,7 @@ Gets table of exchange rates from date (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
 | date | *System.Boolean*<br>the date. |
 
@@ -232,7 +231,7 @@ Gets tables from startDate to endDate.
 
 | Name | Description |
 | ---- | ----------- |
-| startDate | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Start date. |
+| startDate | *System.Char*<br>Start date. |
 | endDate | *System.DateTime*<br>End date. |
 | tableCode | *System.DateTime*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
@@ -247,7 +246,7 @@ Gets last topCount of tables.
 
 | Name | Description |
 | ---- | ----------- |
-| topCount | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Amount of tables to return. |
+| topCount | *System.Char*<br>Amount of tables to return. |
 | tableCode | *System.Int32*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
@@ -261,7 +260,7 @@ Gets tables from startDate to endDate (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | startDate | *System.DateTime*<br>Start date. |
 | endDate | *System.DateTime*<br>End date. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
@@ -276,7 +275,7 @@ Gets last topCount of tables (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | topCount | *System.Int32*<br>Amount of tables to return. |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
@@ -290,7 +289,7 @@ Gets table of exchange rates published today.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, false if XML. |
 
 #### Returns
@@ -303,30 +302,27 @@ Gets table of exchange rates published today (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>Table Code (Capital A-C). |
+| tableCode | *System.Char*<br>Table Code (Capital A-C). |
 | isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
+### TableCodes
 
-## TableCode
+Table Codes accepted by NBP API (Currently A, B, C).
 
-Table codes - A, B or C
-
-### NBPCurrencyAPILib.NBPAPI.TableLetter(tableCode)
+### TableLetterCheck(tableCode)
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *NBPCurrencyAPILib.NBPAPI.TableCode*<br>The table code. |
+| tableCode | *System.Char*<br>The table code (in uppercase). |
 
 #### Returns
 
-Table Code as a letter
+Whether <a href="#nbpapi.tablecodes">NBPAPI.TableCodes</a> contains the table code.
 
-*System.ArgumentException:* Incorrect table code.
-
-### NBPCurrencyAPILib.NBPAPI.uri
+### uri
 
 http://api.nbp.pl/api/
