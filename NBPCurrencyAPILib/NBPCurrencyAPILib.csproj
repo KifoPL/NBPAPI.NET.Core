@@ -12,7 +12,7 @@
     <PackageTags>nbp, csharp, api, lib, dll, .dll</PackageTags>
     <Copyright>Copyright (c) 2021 KifoPL</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <SignAssembly>false</SignAssembly>
     <PackageIcon>Narodowy_Bank_Polski_logo_(2021).svg.png</PackageIcon>

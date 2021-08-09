@@ -2,38 +2,29 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Linq;
 
 namespace NBPCurrencyAPILib
 {
     public static partial class NBPAPI
     {
         /// <summary>
-        /// Table codes - A, B or C
+        /// Table Codes accepted by NBP API (Currently A, B, C).
         /// </summary>
-        public enum TableCode
-        {
-            A,
-            B,
-            C
-        }
+        public static readonly char[] TableCodes = "ABC".ToCharArray();
+
         private static HttpClient httpClient = new();
         /// <summary>
         /// http://api.nbp.pl/api/
         /// </summary>
         private readonly static string uri = "http://api.nbp.pl/api/";
 
-        /// <param name="tableCode">The table code.</param>
-        /// <returns>Table Code as a letter</returns>
-        /// <exception cref="ArgumentException">Incorrect table code.</exception>
-        private static string TableLetter(TableCode tableCode)
+        /// <param name="tableCode">The table code (in uppercase).</param>
+        /// <returns>Whether <see cref="TableCodes"/> contains the table code.</returns>
+        private static bool TableLetterCheck(char tableCode)
         {
-            return tableCode switch
-            {
-                TableCode.A => "A",
-                TableCode.B => "B",
-                TableCode.C => "C",
-                _ => throw new ArgumentException("Incorrect table code!"),
-            };
+            if (TableCodes.Contains(tableCode)) return true;
+            else return false;
         }
 
         /// <param name="response">The response.</param>

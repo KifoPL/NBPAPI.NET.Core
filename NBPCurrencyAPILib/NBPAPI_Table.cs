@@ -16,9 +16,11 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTableAsync(TableCode tableCode, bool isJSON = true)
+        public static Task<string> GetTableAsync(char tableCode, bool isJSON = true)
         {
-            string tableLetter = TableLetter(tableCode);
+            string tableLetter = tableCode.ToString().ToUpper();
+
+            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}?format={(isJSON ? "json" : "xml")}";
 
@@ -34,7 +36,7 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTable(TableCode tableCode, bool isJSON = true)
+        public static string GetTable(char tableCode, bool isJSON = true)
         {
             return GetTableAsync(tableCode, isJSON).Result;
         }
@@ -47,9 +49,11 @@ namespace NBPCurrencyAPILib
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <param name="date"> the date.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTableAsync(TableCode tableCode, DateTime date, bool isJSON = true)
+        public static Task<string> GetTableAsync(char tableCode, DateTime date, bool isJSON = true)
         {
-            string tableLetter = TableLetter(tableCode);
+            string tableLetter = tableCode.ToString().ToUpper();
+
+            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/{date:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
 
@@ -66,7 +70,7 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTable(TableCode tableCode, DateTime date, bool isJSON = true)
+        public static string GetTable(char tableCode, DateTime date, bool isJSON = true)
         {
             return GetTableAsync(tableCode, date, isJSON).Result;
         }
@@ -78,9 +82,11 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTableTodayAsync(TableCode tableCode, bool isJSON = true)
+        public static Task<string> GetTableTodayAsync(char tableCode, bool isJSON = true)
         {
-            string tableLetter = TableLetter(tableCode);
+            string tableLetter = tableCode.ToString().ToUpper();
+
+            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/today?format={(isJSON ? "json" : "xml")}";
 
@@ -96,7 +102,7 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTableToday(TableCode tableCode, bool isJSON = true)
+        public static string GetTableToday(char tableCode, bool isJSON = true)
         {
             return GetTableTodayAsync(tableCode, isJSON).Result;
         }
@@ -112,9 +118,11 @@ namespace NBPCurrencyAPILib
         /// <param name="topCount">Amount of tables to return.</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTablesAsync(TableCode tableCode, int topCount, bool isJSON = true)
+        public static Task<string> GetTablesAsync(char tableCode, int topCount, bool isJSON = true)
         {
-            string tableLetter = TableLetter(tableCode);
+            string tableLetter = tableCode.ToString().ToUpper();
+
+            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/last/{topCount}?format={(isJSON ? "json" : "xml")}";
 
@@ -131,7 +139,7 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTables(TableCode tableCode, int topCount, bool isJSON = true)
+        public static string GetTables(char tableCode, int topCount, bool isJSON = true)
         {
             return GetTablesAsync(tableCode, topCount, isJSON).Result;
         }
@@ -143,9 +151,11 @@ namespace NBPCurrencyAPILib
         /// <param name="endDate">End date.</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTablesAsync(TableCode tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
+        public static Task<string> GetTablesAsync(char tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
         {
-            string tableLetter = TableLetter(tableCode);
+            string tableLetter = tableCode.ToString().ToUpper();
+
+            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
 
             string getpath = uri + $"exchangerates/tables/{tableLetter}/{startDate:yyyy-MM-dd}/{endDate:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
 
@@ -163,7 +173,7 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTables(TableCode tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
+        public static string GetTables(char tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
         {
             return GetTablesAsync(tableCode, startDate, endDate, isJSON).Result;
         }
