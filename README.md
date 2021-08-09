@@ -6,12 +6,12 @@ If you find any issues, [submit a ticket](https://github.com/KifoPL/NBPCurrencyD
 
 ## NuGet Package:
 
-- This library is available to download as a NuGet package. Simply search for `NBP` or [click here](https://www.nuget.org/packages/NBP.API.lib/)
+- This library is available to download as a NuGet package. Simply search for `NBP` or [click here](https://www.nuget.org/packages/NBPAPI.NET.Core/).
 
 ## Current API coverage:
 
 - [x] Currencies
 - [x] Tables
-- [ ] Gold rates (coming soon™)
+- [ ] Gold rates *(coming soon™)*
 
 ## [Click for documentation](./docs/Documentation.md)
