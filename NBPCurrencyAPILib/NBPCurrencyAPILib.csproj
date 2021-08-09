@@ -17,7 +17,9 @@
     <SignAssembly>false</SignAssembly>
     <PackageIcon>Narodowy_Bank_Polski_logo_(2021).svg.png</PackageIcon>
     <PackageIconUrl />
-    <PackageId>NBP.API.lib</PackageId>
+    <PackageId>NBPAPI.NET.Core</PackageId>
+    <AssemblyName>NBPAPI.NET.Core</AssemblyName>
+    <RootNamespace>NBPAPI.NET.Core</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
