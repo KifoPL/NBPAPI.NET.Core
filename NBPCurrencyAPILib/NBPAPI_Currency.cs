@@ -11,6 +11,8 @@ namespace NBPCurrencyAPILib
     /// </summary>
     public static partial class NBPAPI
     {
+        private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
+
         #region GetCurrency
         /// <summary>
         /// Gets current Exchange rate from PLN to <paramref name="currencyCode"/> (asynchronous).
@@ -129,9 +131,8 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
         /// <param name="topCount">Amount of exchange rates to return.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetCurrenciesAsync(char tableCode, string currencyCode, int topCount, bool isJSON = true)
+        public static async Task<ExchangeRatesSeries> GetCurrenciesAsync(char tableCode, string currencyCode, int topCount)
         {
             currencyCode = currencyCode.ToUpper();
             if (currencyCode.Length != 3) throw new ArgumentException("Code must be 3 letters long, check ISO 4217.");
@@ -140,26 +141,26 @@ namespace NBPCurrencyAPILib
 
             if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
 
-            string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}/last/{topCount}?format={(isJSON ? "json" : "xml")}";
+            string getpath = uri + $"exchangerates/rates/{tableLetter}/{currencyCode}/last/{topCount}?format=json";
 
             HttpResponseMessage result = httpClient.GetAsync(getpath).Result;
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            return result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<ExchangeRatesSeries>(await result.Content.ReadAsStringAsync(), JsonOptions);
         }
         /// <summary>
         /// Gets current Exchange rate from PLN to <paramref name="currencyCode"/>.
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="currencyCode">ISO 4217 Currency Code.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <param name="topCount">The amount of currencies to get.</param>
         /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetCurrencies(char tableCode, string currencyCode, int topCount, bool isJSON = true)
+        public static ExchangeRatesSeries GetCurrencies(char tableCode, string currencyCode, int topCount)
         {
-            return GetCurrencies(tableCode, currencyCode, topCount, isJSON);
+            return GetCurrenciesAsync(tableCode, currencyCode, topCount).Result;
         }
+
         /// <summary>
         /// Gets exchange rates from PLN to <paramref name="currencyCode"/> from <paramref name="startDate"/> to <paramref name="endDate"/> (asynchronous).
         /// </summary>
@@ -183,8 +184,7 @@ namespace NBPCurrencyAPILib
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            JsonSerializerOptions jsonOptions = new() { PropertyNameCaseInsensitive = true };
-            return JsonSerializer.Deserialize<ExchangeRatesSeries>(await result.Content.ReadAsStringAsync(), jsonOptions);
+            return JsonSerializer.Deserialize<ExchangeRatesSeries>(await result.Content.ReadAsStringAsync(), JsonOptions);
         }
         /// <summary>
         /// Gets exchange rates from PLN to <paramref name="currencyCode"/> from <paramref name="startDate"/> to <paramref name="endDate"/>.

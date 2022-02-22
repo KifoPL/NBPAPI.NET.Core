@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NBPCurrencyAPILib;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NBPCurrencyAPILib.Tests
 {
@@ -32,7 +28,7 @@ namespace NBPCurrencyAPILib.Tests
         [TestMethod()]
         public void GetCurrenciesAsyncTest()
         {
-            Assert.IsTrue(NBPAPI.GetCurrenciesAsync('A', "EUR", 3).Result.Contains("code"));
+            Assert.IsTrue(NBPAPI.GetCurrenciesAsync('A', "EUR", 3).Result.Currency.Any());
         }
 
         [TestMethod()]
