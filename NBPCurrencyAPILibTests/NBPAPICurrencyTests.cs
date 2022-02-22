@@ -38,7 +38,7 @@ namespace NBPCurrencyAPILib.Tests
         [TestMethod()]
         public void GetCurrenciesAsyncTestFromTo()
         {
-            Assert.IsTrue(NBPAPI.GetCurrenciesAsync('A', "EUR", new DateTime(2021, 07, 21), new DateTime(2021, 07, 25)).Result.Contains("code"));
+            Assert.IsTrue(NBPAPI.GetCurrenciesAsync('A', "EUR", new DateTime(2021, 07, 21), new DateTime(2021, 07, 25)).Result.Currency.Any());
         }
 
     }
