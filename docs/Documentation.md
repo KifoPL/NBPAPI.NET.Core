@@ -3,326 +3,217 @@
 <table>
 <tbody>
 <tr>
-<td><a href="#nbpapi">NBPAPI</a></td>
+<td><a href="#currencyrate">CurrencyRate</a></td>
+<td><a href="#exchangerates">ExchangeRates</a></td>
+</tr>
+<tr>
+<td><a href="#rate">Rate</a></td>
+<td><a href="#table">Table</a></td>
+</tr>
+<tr>
+<td><a href="#goldrate">GoldRate</a></td>
+<td><a href="#tablerate">TableRate</a></td>
+</tr>
+<tr>
+<td><a href="#nbpapi">NbpApi</a></td>
 </tr>
 </tbody>
 </table>
 
 
-## NBPAPI
+## CurrencyRate
+
+Rate retrieved in single-currency rate requests.
+
+
+## ExchangeRates
+
+Class containing definitions of
+
+
+## Rate
+
+Definition of single-currency exchange rate table
+
+
+## Table
+
+Definition of exchange rate table
+
+
+## GoldRate
+
+Price of 1 kg of gold in PLN
+
+
+## TableRate
+
+Rate retrieved in tables request
+
+
+## NbpApi
 
 Entry point for interaction with the library.
 
-### Error(response)
-
-| Name | Description |
-| ---- | ----------- |
-| response | *System.Net.Http.HttpResponseMessage*<br>The response. |
-
-#### Returns
-
-Error message with status code.
-
-### GetCurrencies(tableCode, currencyCode, isJSON, endDate, startDate)
-
-Gets exchange rates from PLN to currencyCode from startDate to endDate.
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
-| endDate | *System.DateTime*<br>The end date. |
-| startDate | *System.Boolean*<br>The start date. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetCurrencies(tableCode, currencyCode, isJSON, topCount)
-
-Gets current Exchange rate from PLN to currencyCode.
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.Int32*<br>`true` if returned string will be JSON, `false` if XML. |
-| topCount | *System.Boolean*<br>The amount of currencies to get. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetCurrenciesAsync(tableCode, currencyCode, startDate, endDate, isJSON)
+### GetCurrenciesAsync(tableCode, currencyCode, startDate, endDate)
 
 Gets exchange rates from PLN to currencyCode from startDate to endDate (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | startDate | *System.DateTime*<br>Start date. |
 | endDate | *System.DateTime*<br>End date. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetCurrenciesAsync(tableCode, currencyCode, topCount, isJSON)
+### GetCurrenciesAsync(tableCode, currencyCode, topCount)
 
 Gets last topCount exchange rates from PLN to currencyCode (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
 | topCount | *System.Int32*<br>Amount of exchange rates to return. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetCurrency(tableCode, currencyCode, isJSON)
-
-Gets current Exchange rate from PLN to currencyCode.
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetCurrencyAsync(tableCode, currencyCode, isJSON)
+### GetCurrencyAsync(tableCode, currencyCode, fromToday)
 
 Gets current Exchange rate from PLN to currencyCode (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
 | currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
+| fromToday | *System.Boolean*<br>`true` if you want table specifically from today (may return null), `false` if currently effective. |
+
+#### Returns
+
+Async result from NBP API.
+
+### GetCurrencyAsync(tableCode, currencyCode, date)
+
+Gets current Exchange rate from PLN to currencyCode published at date (asynchronous).
+
+| Name | Description |
+| ---- | ----------- |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
+| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
+| date | *System.DateTime*<br>The date. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetCurrencyAsync(tableCode, currencyCode, isJSON, date)
+### GetGoldPriceAsync(fromToday)
 
-Gets current Exchange rate from PLN to currencyCode from date (asynchronous).
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
-| date | *System.Boolean*<br>The date. |
-
-#### Returns
-
-Async XML/JSON result from NBP API.
-
-### GetCurrencyToday(tableCode, currencyCode, isJSON)
-
-Gets Exchange rate from PLN to currencyCode published today.
+Gets current gold price asynchronously.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML |
+| fromToday | *System.Boolean*<br>`true` if you want table specifically from today (may return null), `false` if currently effective. |
 
 #### Returns
 
-XML/JSON result from NBP API.
+Gold price.
 
-### GetCurrencyToday(tableCode, currencyCode, isJSON, date)
+### GetGoldPriceAsync(date)
 
-Gets Exchange rate from PLN to currencyCode from date.
+Gets the gold price published at date asynchronously.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
-| date | *System.Boolean*<br>The date. |
+| date | *System.DateTime*<br>The date. |
 
 #### Returns
 
-XML/JSON result from NBP API.
+Gold price, or null
 
-### GetCurrencyTodayAsync(tableCode, currencyCode, isJSON)
+### GetGoldPricesAsync(startDate, endDate)
 
-Gets current Exchange rate from PLN to currencyCode published today (asynchronous).
+Gets the gold prices asynchronously.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| currencyCode | *System.String*<br>ISO 4217 Currency Code. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
+| startDate | *System.DateTime*<br>The start date. |
+| endDate | *System.DateTime*<br>The end date. |
 
 #### Returns
 
-Async XML/JSON result from NBP API.
+List of gold prices.
 
-### GetTable(tableCode, isJSON)
+### GetGoldPricesAsync(topCount)
 
-Gets current table of exchange rates.
+Gets the gold prices asynchronously.
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, false if XML. |
+| topCount | *System.Int32*<br>The top count. |
 
 #### Returns
 
-XML/JSON result from NBP API.
+List of gold prices.
 
-### GetTable(date, tableCode, isJSON)
-
-Gets table of exchange rates from date.
-
-| Name | Description |
-| ---- | ----------- |
-| date | *System.Char*<br>The Date. |
-| tableCode | *System.DateTime*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, false if XML. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetTableAsync(tableCode, isJSON)
+### GetTableAsync(tableCode, fromToday)
 
 Gets current table of exchange rates (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
+| fromToday | *System.Boolean*<br>`true` if you want table specifically from today (may return null), `false` if currently effective. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetTableAsync(tableCode, isJSON, date)
+### GetTableAsync(tableCode, date)
 
 Gets table of exchange rates from date (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| isJSON | *System.DateTime*<br>`true` if returned string will be JSON, `false` if XML. |
-| date | *System.Boolean*<br>the date. |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
+| date | *System.DateTime*<br>the date. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetTables(startDate, endDate, tableCode, isJSON)
-
-Gets tables from startDate to endDate.
-
-| Name | Description |
-| ---- | ----------- |
-| startDate | *System.Char*<br>Start date. |
-| endDate | *System.DateTime*<br>End date. |
-| tableCode | *System.DateTime*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetTables(topCount, tableCode, isJSON)
-
-Gets last topCount of tables.
-
-| Name | Description |
-| ---- | ----------- |
-| topCount | *System.Char*<br>Amount of tables to return. |
-| tableCode | *System.Int32*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetTablesAsync(tableCode, startDate, endDate, isJSON)
+### GetTablesAsync(tableCode, startDate, endDate)
 
 Gets tables from startDate to endDate (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
 | startDate | *System.DateTime*<br>Start date. |
 | endDate | *System.DateTime*<br>End date. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetTablesAsync(tableCode, topCount, isJSON)
+### GetTablesAsync(tableCode, topCount)
 
 Gets last topCount of tables (asynchronous).
 
 | Name | Description |
 | ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
+| tableCode | *NBPAPI.NET.Core.Enums.TableType*<br>Table Code (Capital A-C). |
 | topCount | *System.Int32*<br>Amount of tables to return. |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
 
 #### Returns
 
 Async XML/JSON result from NBP API.
 
-### GetTableToday(tableCode, isJSON)
-
-Gets table of exchange rates published today.
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, false if XML. |
-
-#### Returns
-
-XML/JSON result from NBP API.
-
-### GetTableTodayAsync(tableCode, isJSON)
-
-Gets table of exchange rates published today (asynchronous).
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>Table Code (Capital A-C). |
-| isJSON | *System.Boolean*<br>`true` if returned string will be JSON, `false` if XML. |
-
-#### Returns
-
-Async XML/JSON result from NBP API.
-
-### TableCodes
-
-Table Codes accepted by NBP API (Currently A, B, C).
-
-### TableLetterCheck(tableCode)
-
-| Name | Description |
-| ---- | ----------- |
-| tableCode | *System.Char*<br>The table code (in uppercase). |
-
-#### Returns
-
-Whether <a href="#nbpapi.tablecodes">NBPAPI.TableCodes</a> contains the table code.
-
-### uri
+### Uri
 
 http://api.nbp.pl/api/
