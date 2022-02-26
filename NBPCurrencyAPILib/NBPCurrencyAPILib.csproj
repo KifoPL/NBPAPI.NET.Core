@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -12,7 +12,7 @@
     <PackageTags>nbp, csharp, api, lib, dll, .dll</PackageTags>
     <Copyright>Copyright (c) 2021 KifoPL</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <SignAssembly>false</SignAssembly>
     <PackageIcon>Narodowy_Bank_Polski_logo_(2021).svg.png</PackageIcon>
@@ -20,10 +20,12 @@
     <PackageId>NBPAPI.NET.Core</PackageId>
     <AssemblyName>NBPAPI.NET.Core</AssemblyName>
     <RootNamespace>NBPAPI.NET.Core</RootNamespace>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\Michal\source\repos\NBPCurrencyAPILib\NBPCurrencyAPILib\NBPCurrencyAPILib.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +37,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
   </ItemGroup>
 
 </Project>
