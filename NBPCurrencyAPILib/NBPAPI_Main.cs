@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace NBPCurrencyAPILib
 {
@@ -18,6 +17,8 @@ namespace NBPCurrencyAPILib
         /// http://api.nbp.pl/api/
         /// </summary>
         private readonly static string uri = "http://api.nbp.pl/api/";
+
+        private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
         /// <param name="tableCode">The table code (in uppercase).</param>
         /// <returns>Whether <see cref="TableCodes"/> contains the table code.</returns>

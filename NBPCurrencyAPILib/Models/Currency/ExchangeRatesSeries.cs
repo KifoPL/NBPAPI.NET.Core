@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NBPAPI.NET.Core.Models
+namespace NBPAPI.NET.Core.Models.Currency
 {
     public class ExchangeRatesSeries
     {

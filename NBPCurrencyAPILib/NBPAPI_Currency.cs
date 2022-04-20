@@ -1,4 +1,4 @@
-﻿using NBPAPI.NET.Core.Models;
+﻿using NBPAPI.NET.Core.Models.Currency;
 using System;
 using System.Net.Http;
 using System.Text.Json;
@@ -11,8 +11,6 @@ namespace NBPCurrencyAPILib
     /// </summary>
     public static partial class NBPAPI
     {
-        private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
-
         #region GetCurrency
         /// <summary>
         /// Gets current Exchange rate from PLN to <paramref name="currencyCode"/> (asynchronous).

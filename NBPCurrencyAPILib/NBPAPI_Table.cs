@@ -1,78 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NBPAPI.NET.Core.Models.Table;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace NBPCurrencyAPILib
 {
     public static partial class NBPAPI
     {
+        private static string ParseTableLetter(char tableCode)
+        {
+            var tableLetter = tableCode.ToString().ToUpper();
+
+            if (!TableLetterCheck(tableLetter[0]))
+                throw new ArgumentException("Incorrect table letter!");
+
+            return tableLetter;
+        }
+
         #region GetTable
         /// <summary>
         /// Gets current table of exchange rates (asynchronous).
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
-        /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTableAsync(char tableCode, bool isJSON = true)
+        /// <returns>Exchange rates table.</returns>
+        public static async Task<ExchangeRatesTable> GetTableAsync(char tableCode)
         {
-            string tableLetter = tableCode.ToString().ToUpper();
-
-            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
-
-            string getpath = uri + $"exchangerates/tables/{tableLetter}?format={(isJSON ? "json" : "xml")}";
+            string getpath = uri + $"exchangerates/tables/{ParseTableLetter(tableCode)}?format=json";
 
             HttpResponseMessage result = httpClient.GetAsync(getpath).Result;
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            return result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<ExchangeRatesTable[]>(await result.Content.ReadAsStringAsync(), JsonOptions).SingleOrDefault();
         }
         /// <summary>
         /// Gets current table of exchange rates.
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
-        /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTable(char tableCode, bool isJSON = true)
+        /// <returns>Exchange rates table.</returns>
+        public static ExchangeRatesTable GetTable(char tableCode)
         {
-            return GetTableAsync(tableCode, isJSON).Result;
+            return GetTableAsync(tableCode).Result;
         }
-
 
         /// <summary>
         /// Gets table of exchange rates from <paramref name="date"/> (asynchronous).
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
         /// <param name="date"> the date.</param>
-        /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTableAsync(char tableCode, DateTime date, bool isJSON = true)
+        /// <returns>Exchange rates table.</returns>
+        public static async Task<ExchangeRatesTable> GetTableAsync(char tableCode, DateTime date)
         {
-            string tableLetter = tableCode.ToString().ToUpper();
-
-            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
-
-            string getpath = uri + $"exchangerates/tables/{tableLetter}/{date:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
+            string getpath = uri + $"exchangerates/tables/{ParseTableLetter(tableCode)}/{date:yyyy-MM-dd}?format=json";
 
             HttpResponseMessage result = httpClient.GetAsync(getpath).Result;
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            return result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<ExchangeRatesTable[]>(await result.Content.ReadAsStringAsync(), JsonOptions).SingleOrDefault();
         }
         /// <summary>
         /// Gets table of exchange rates from <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The Date.</param>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
-        /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTable(char tableCode, DateTime date, bool isJSON = true)
+        /// <returns>Exchange rates table.</returns>
+        public static ExchangeRatesTable GetTable(char tableCode, DateTime date)
         {
-            return GetTableAsync(tableCode, date, isJSON).Result;
+            return GetTableAsync(tableCode, date).Result;
         }
 
 
@@ -80,35 +77,27 @@ namespace NBPCurrencyAPILib
         /// Gets table of exchange rates published today (asynchronous).
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
-        /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTableTodayAsync(char tableCode, bool isJSON = true)
+        /// <returns>Exchange rates table.</returns>
+        public static async Task<ExchangeRatesTable> GetTableTodayAsync(char tableCode)
         {
-            string tableLetter = tableCode.ToString().ToUpper();
-
-            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
-
-            string getpath = uri + $"exchangerates/tables/{tableLetter}/today?format={(isJSON ? "json" : "xml")}";
+            string getpath = uri + $"exchangerates/tables/{ParseTableLetter(tableCode)}/today?format=json";
 
             HttpResponseMessage result = httpClient.GetAsync(getpath).Result;
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            return result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<ExchangeRatesTable[]>(await result.Content.ReadAsStringAsync(), JsonOptions).SingleOrDefault();
         }
         /// <summary>
         /// Gets table of exchange rates published today.
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, false if XML.</param>
-        /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTableToday(char tableCode, bool isJSON = true)
+        /// <returns>Exchange rates table.</returns>
+        public static ExchangeRatesTable GetTableToday(char tableCode)
         {
-            return GetTableTodayAsync(tableCode, isJSON).Result;
+            return GetTableTodayAsync(tableCode).Result;
         }
         #endregion GetTable
-
-
 
         #region GetTables
         /// <summary>
@@ -116,32 +105,26 @@ namespace NBPCurrencyAPILib
         /// </summary>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="topCount">Amount of tables to return.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
-        /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTablesAsync(char tableCode, int topCount, bool isJSON = true)
+        /// <returns>Array of exchange rates tables.</returns>
+        public static async Task<ExchangeRatesTable[]> GetTablesAsync(char tableCode, int topCount)
         {
-            string tableLetter = tableCode.ToString().ToUpper();
-
-            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
-
-            string getpath = uri + $"exchangerates/tables/{tableLetter}/last/{topCount}?format={(isJSON ? "json" : "xml")}";
+            string getpath = uri + $"exchangerates/tables/{ParseTableLetter(tableCode)}/last/{topCount}?format=json";
 
             HttpResponseMessage result = httpClient.GetAsync(getpath).Result;
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            return result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<ExchangeRatesTable[]>(await result.Content.ReadAsStringAsync(), JsonOptions);
         }
         /// <summary>
         /// Gets last <paramref name="topCount"/> of tables.
         /// </summary>
         /// <param name="topCount">Amount of tables to return.</param>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
-        /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTables(char tableCode, int topCount, bool isJSON = true)
+        /// <returns>Array of exchange rates tables.</returns>
+        public static ExchangeRatesTable[] GetTables(char tableCode, int topCount)
         {
-            return GetTablesAsync(tableCode, topCount, isJSON).Result;
+            return GetTablesAsync(tableCode, topCount).Result;
         }
         /// <summary>
         /// Gets tables from <paramref name="startDate"/> to <paramref name="endDate"/> (asynchronous).
@@ -149,21 +132,16 @@ namespace NBPCurrencyAPILib
         /// <param name="tableCode">Table Code (Capital A-C).</param>
         /// <param name="startDate">Start date.</param>
         /// <param name="endDate">End date.</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
-        /// <returns>Async XML/JSON result from NBP API.</returns>
-        public static Task<string> GetTablesAsync(char tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
+        /// <returns>Array of exchange rates tables.</returns>
+        public static async Task<ExchangeRatesTable[]> GetTablesAsync(char tableCode, DateTime startDate, DateTime endDate)
         {
-            string tableLetter = tableCode.ToString().ToUpper();
-
-            if (!TableLetterCheck(tableLetter[0])) throw new ArgumentException("Incorrect table letter!");
-
-            string getpath = uri + $"exchangerates/tables/{tableLetter}/{startDate:yyyy-MM-dd}/{endDate:yyyy-MM-dd}?format={(isJSON ? "json" : "xml")}";
+            string getpath = uri + $"exchangerates/tables/{ParseTableLetter(tableCode)}/{startDate:yyyy-MM-dd}/{endDate:yyyy-MM-dd}?format=json";
 
             HttpResponseMessage result = httpClient.GetAsync(getpath).Result;
 
             if (!result.IsSuccessStatusCode) throw Error(result);
 
-            return result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<ExchangeRatesTable[]>(await result.Content.ReadAsStringAsync(), JsonOptions);
         }
         /// <summary>
         /// Gets tables from <paramref name="startDate"/> to <paramref name="endDate"/>.
@@ -171,11 +149,10 @@ namespace NBPCurrencyAPILib
         /// <param name="startDate">Start date.</param>
         /// <param name="endDate">End date.</param>
         /// <param name="tableCode">Table Code (Capital A-C).</param>
-        /// <param name="isJSON"><c>true</c> if returned string will be JSON, <c>false</c> if XML.</param>
-        /// <returns>XML/JSON result from NBP API.</returns>
-        public static string GetTables(char tableCode, DateTime startDate, DateTime endDate, bool isJSON = true)
+        /// <returns>Array of exchange rates tables.</returns>
+        public static ExchangeRatesTable[] GetTables(char tableCode, DateTime startDate, DateTime endDate)
         {
-            return GetTablesAsync(tableCode, startDate, endDate, isJSON).Result;
+            return GetTablesAsync(tableCode, startDate, endDate).Result;
         }
         #endregion GetTables
     }

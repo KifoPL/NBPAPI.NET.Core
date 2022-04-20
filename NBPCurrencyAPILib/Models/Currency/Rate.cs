@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NBPAPI.NET.Core.Models
+namespace NBPAPI.NET.Core.Models.Currency
 {
     public class Rate
     {
